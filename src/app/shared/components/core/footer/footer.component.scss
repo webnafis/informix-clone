@@ -1,0 +1,17 @@
+app-footer-xl {
+  display: block;
+}
+
+app-bottom-navbar {
+  display: none;
+}
+
+@media only screen and (max-width: 599px) {
+  app-bottom-navbar {
+    display: block;
+  }
+
+  app-footer-xl {
+    display: none;
+  }
+}

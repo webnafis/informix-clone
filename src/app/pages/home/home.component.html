@@ -1,0 +1,32 @@
+<div class="home-container">
+  <app-categories></app-categories>
+  <!-- END! Category View -->
+
+  @switch (showcaseViews) {
+  @case ('Showcase 1') {
+  <!--      <app-showcase-1></app-showcase-1>-->
+  <app-showcase-2></app-showcase-2>
+  }
+  @case ('Showcase 2') {
+  <app-showcase-2></app-showcase-2>
+  }
+  @case ('Showcase 3') {
+  <app-showcase-3></app-showcase-3>
+  }
+  }
+  <!-- END! Showcase Multiple Views -->
+
+  <app-banner-1></app-banner-1>
+  <!-- END! Banner -->
+
+
+  @for (tag of tags; let i = $index; track i) {
+  <app-tag-products [tag]="tag" [index]="i"></app-tag-products>
+  }
+  <!-- END Tag View -->
+
+</div>
+
+<div class="footer-wrapper">
+  <app-footer-xl [shopInfo]="shopInfo"></app-footer-xl>
+</div>

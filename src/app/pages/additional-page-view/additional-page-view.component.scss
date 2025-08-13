@@ -1,0 +1,19 @@
+@import "variables";
+
+.container {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.coming-soon {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: $color-primary;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  min-height: 400px;
+}

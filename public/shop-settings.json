@@ -1,0 +1,55 @@
+{
+  "shop": "687c89eb6b0076c2c759b12e",
+  "themeColors": {
+    "primary": "#e8007c",
+    "secondary": "#00c153",
+    "tertiary": "#ff00ae"
+  },
+  "themeViewSettings": [
+    {
+      "type": "headerViews",
+      "value": [
+        "Header 1"
+      ]
+    },
+    {
+      "type": "showcaseViews",
+      "value": [
+        "Showcase 2"
+      ]
+    },
+    {
+      "type": "categoryViews",
+      "value": [
+        "Category 1"
+      ]
+    },
+    {
+      "type": "brandViews",
+      "value": [
+        "None"
+      ]
+    },
+    {
+      "type": "productViews",
+      "value": [
+        "Tag"
+      ]
+    },
+    {
+      "type": "productCardViews",
+      "value": [
+        "Product Card 3"
+      ]
+    }
+  ],
+  "pageViewSettings": [
+    {
+      "name": "Checkout 3",
+      "type": "checkout",
+      "isLoginRequire": false
+    }
+  ],
+  "searchHints": "lipstick, foundation, face serum, moisturizer, lipstick",
+  "orderLanguage": "bn"
+}
