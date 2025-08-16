@@ -1,27 +1,26 @@
-import {Component, inject, OnDestroy, OnInit, PLATFORM_ID} from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
-import {TagService} from '../../services/common/tag.service';
-import {AppConfigService} from '../../services/core/app-config.service';
-import {Router} from "@angular/router";
-import {Meta, Title} from "@angular/platform-browser";
-import {CanonicalService} from "../../services/core/canonical.service";
-import {Subscription} from 'rxjs';
-import {StorageService} from "../../services/core/storage.service";
-import {Popup} from "../../interfaces/common/popup.interface";
-import {PopupService} from "../../services/common/popup.service";
-import {isPlatformBrowser} from '@angular/common';
-import {PopupDialogComponent} from '../../shared/dialog/popup-dialog/popup-dialog.component';
-import {ThemeViewSetting} from '../../interfaces/common/setting.interface';
-import {Showcase2Component} from "./showcases/showcase-2/showcase-2.component";
-import {TimeCounterModule} from "../../shared/components/time-counter/time-counter.module";
-import {Showcase3Component} from "./showcases/showcase-3/showcase-3.component";
-import {CategoriesComponent} from "./categories/categories.component";
-import {TagProductsComponent} from "./tag-products/tag-products.component";
-import {FooterXlComponent} from "../../shared/components/core/footer/footer-xl/footer-xl.component";
-import {ShopInformation} from "../../interfaces/common/shop-information.interface";
-import {ShopInformationService} from "../../services/common/shop-information.service";
-import {Banner1Component} from "./all-banner/banner-1/banner-1.component";
-import {SeoPageService} from "../../services/common/seo-page.service";
+import { Component, inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { TagService } from '../../services/common/tag.service';
+import { AppConfigService } from '../../services/core/app-config.service';
+import { Router } from "@angular/router";
+import { Meta, Title } from "@angular/platform-browser";
+import { CanonicalService } from "../../services/core/canonical.service";
+import { Subscription } from 'rxjs';
+import { StorageService } from "../../services/core/storage.service";
+import { Popup } from "../../interfaces/common/popup.interface";
+import { PopupService } from "../../services/common/popup.service";
+import { isPlatformBrowser } from '@angular/common';
+import { PopupDialogComponent } from '../../shared/dialog/popup-dialog/popup-dialog.component';
+import { ThemeViewSetting } from '../../interfaces/common/setting.interface';
+import { Showcase2Component } from "./showcases/showcase-2/showcase-2.component";
+import { TimeCounterModule } from "../../shared/components/time-counter/time-counter.module";
+import { Showcase3Component } from "./showcases/showcase-3/showcase-3.component";
+import { CategoriesComponent } from "./categories/categories.component";
+import { TagProductsComponent } from "./tag-products/tag-products.component";
+import { FooterXlComponent } from "../../shared/components/core/footer/footer-xl/footer-xl.component";
+import { ShopInformation } from "../../interfaces/common/shop-information.interface";
+import { ShopInformationService } from "../../services/common/shop-information.service";
+import { SeoPageService } from "../../services/common/seo-page.service";
 
 @Component({
   selector: 'app-home',
@@ -35,7 +34,7 @@ import {SeoPageService} from "../../services/common/seo-page.service";
     CategoriesComponent,
     TagProductsComponent,
     FooterXlComponent,
-    Banner1Component,
+
   ]
 })
 export class HomeComponent implements OnInit, OnDestroy {
@@ -188,7 +187,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private getAllSeoPage() {
-    const subscription = this.seoPageService.getAllSeoPageByUi({status: 'publish', 'type': 'home-page'}, 1, 1).subscribe({
+    const subscription = this.seoPageService.getAllSeoPageByUi({ status: 'publish', 'type': 'home-page' }, 1, 1).subscribe({
       next: (res) => {
         this.seoPageData = res.data[0];
         if (isPlatformBrowser(this.platformId)) {
@@ -219,30 +218,30 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.title.setTitle(seoTitle);
 
     // Meta Tags
-    this.meta.updateTag({name: 'robots', content: 'index, follow'});
-    this.meta.updateTag({name: 'theme-color', content: this.themeColors?.primary});
-    this.meta.updateTag({name: 'description', content: seoDescription});
+    this.meta.updateTag({ name: 'robots', content: 'index, follow' });
+    this.meta.updateTag({ name: 'theme-color', content: this.themeColors?.primary });
+    this.meta.updateTag({ name: 'description', content: seoDescription });
     this.meta.updateTag({ name: 'keywords', content: seoKeywords });
 
     // Open Graph (og:)
-    this.meta.updateTag({property: 'og:title', content: seoTitle});
-    this.meta.updateTag({property: 'og:type', content: 'website'});
-    this.meta.updateTag({property: 'og:url', content: url});
-    this.meta.updateTag({property: 'og:image', content: imageUrl});
-    this.meta.updateTag({property: 'og:image:type', content: 'image/jpeg'});
-    this.meta.updateTag({property: 'og:image:width', content: '1200'}); // Recommended width
-    this.meta.updateTag({property: 'og:image:height', content: '630'}); // Recommended height
-    this.meta.updateTag({property: 'og:description', content: seoDescription});
-    this.meta.updateTag({property: 'og:locale', content: 'en_US'});
+    this.meta.updateTag({ property: 'og:title', content: seoTitle });
+    this.meta.updateTag({ property: 'og:type', content: 'website' });
+    this.meta.updateTag({ property: 'og:url', content: url });
+    this.meta.updateTag({ property: 'og:image', content: imageUrl });
+    this.meta.updateTag({ property: 'og:image:type', content: 'image/jpeg' });
+    this.meta.updateTag({ property: 'og:image:width', content: '1200' }); // Recommended width
+    this.meta.updateTag({ property: 'og:image:height', content: '630' }); // Recommended height
+    this.meta.updateTag({ property: 'og:description', content: seoDescription });
+    this.meta.updateTag({ property: 'og:locale', content: 'en_US' });
 
     // Twitter Tags
-    this.meta.updateTag({name: 'twitter:title', content: seoTitle});
-    this.meta.updateTag({name: 'twitter:card', content: 'summary_large_image'});
-    this.meta.updateTag({name: 'twitter:description', content: seoDescription});
-    this.meta.updateTag({name: 'twitter:image', content: imageUrl}); // Image for Twitter
+    this.meta.updateTag({ name: 'twitter:title', content: seoTitle });
+    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+    this.meta.updateTag({ name: 'twitter:description', content: seoDescription });
+    this.meta.updateTag({ name: 'twitter:image', content: imageUrl }); // Image for Twitter
 
     // Microsoft
-    this.meta.updateTag({name: 'msapplication-TileImage', content: imageUrl});
+    this.meta.updateTag({ name: 'msapplication-TileImage', content: imageUrl });
 
     // Canonical
     this.canonicalService.setCanonicalURL();
