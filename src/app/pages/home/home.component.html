@@ -1,6 +1,4 @@
 <div class="home-container">
-  <app-categories></app-categories>
-  <!-- END! Category View -->
 
   @switch (showcaseViews) {
   @case ('Showcase 1') {
@@ -16,11 +14,13 @@
   }
   <!-- END! Showcase Multiple Views -->
 
+  <app-categories></app-categories>
+  <!-- END! Category View -->
 
 
 
-  @for (tag of tags; let i = $index; track i) {
-  <app-tag-products [tag]="tag" [index]="i"></app-tag-products>
+  @for (tagProduct of tagAndProducts; let i = $index; track i) {
+  <app-tag-products [tag]="tagProduct.tag" [products]="tagProduct.products" [index]="i"></app-tag-products>
   }
   <!-- END Tag View -->
 

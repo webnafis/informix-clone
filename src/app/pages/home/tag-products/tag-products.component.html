@@ -1,55 +1,59 @@
 <div class="container">
   @if (products?.length) {
-    <div class="products-header">
-      <div class="flash-title-counter">
-        <h2>{{ tag?.name }}</h2>
-        @if (tag?.startDate) {
-          <app-time-counter [endDate]="tag?.startDate"></app-time-counter>
-        }
-      </div>
-      <div class="more">
-        <a [routerLink]="'/products'" [queryParams]="{ tag: tag?.name }">
-          View All
-          <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="black">
-            <path d="M0 0h24v24H0z" fill="none"/>
-            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-          </svg>
-        </a>
-      </div>
+
+  <div class="products-header">
+    <div class="flash-title-counter">
+      <h2>{{ tag?.name }}</h2>
+      @if (tag?.startDate) {
+      <app-time-counter [endDate]="tag?.startDate"></app-time-counter>
+      }
     </div>
+    <div class="more">
+      <a [routerLink]="'/products'" [queryParams]="{ tag: tag?.name }">
+        View All
+        <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+          fill="black">
+          <path d="M0 0h24v24H0z" fill="none" />
+          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+        </svg>
+      </a>
+    </div>
+  </div>
   }
 
   <div class="products-cards">
 
     @defer (when !isLoading) {
-      @if (products?.length) {
-        @switch (productCardViews) {
-          @case ('Product Card 1') {
-            @for (item of products.slice(0, visibleProducts); track $index) {
-              <app-product-card-1 [product]="item"></app-product-card-1>
-            }
-          }
-          @case ('Product Card 2') {
-            @for (item of products.slice(0, visibleProducts); track $index) {
-              <app-product-card-2 [product]="item"></app-product-card-2>
-            }
-          }
-          @case ('Product Card 3') {
-            @for (item of products.slice(0, visibleProducts); track $index) {
-              <app-product-card-3 [product]="item"></app-product-card-3>
-            }
-          }
-          @case ('Product Card 4') {
-            @for (item of products.slice(0, visibleProducts); track $index) {
-              <app-product-card-4 [product]="item"></app-product-card-4>
-            }
-          }
-        }
-      }
+    @if (products?.length) {
+    @switch (productCardViews) {
+    @case ('Product Card 1') {
+    @for (item of products.slice(0, visibleProducts); track $index) {
+
+    <app-product-card-1 [product]="item"></app-product-card-1>
+
+    }
+    }
+    @case ('Product Card 2') {
+    @for (item of products.slice(0, visibleProducts); track $index) {
+    <app-product-card-2 [product]="item"></app-product-card-2>
+    }
+    }
+    @case ('Product Card 3') {
+    @for (item of products.slice(0, visibleProducts); track $index) {
+    <app-product-card-3 [product]="item"></app-product-card-3>
+    }
+    }
+    @case ('Product Card 4') {
+    @for (item of products.slice(0, visibleProducts); track $index) {
+    <app-product-card-4 [product]="item"></app-product-card-4>
+    }
+    }
+    }
+    }
     } @placeholder (minimum 50ms) {
-      @for (data of [].constructor(10); track $index) {
-        <app-product-card-loader/>
-      }
+    @for (data of [].constructor(10); track $index) {
+    <app-product-card-loader />
+    }
     }
 
   </div>
@@ -58,4 +62,3 @@
 
 
 </div>
-

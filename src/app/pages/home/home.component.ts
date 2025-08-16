@@ -21,6 +21,7 @@ import { FooterXlComponent } from "../../shared/components/core/footer/footer-xl
 import { ShopInformation } from "../../interfaces/common/shop-information.interface";
 import { ShopInformationService } from "../../services/common/shop-information.service";
 import { SeoPageService } from "../../services/common/seo-page.service";
+import { PRODUCTSBYCATEGORY_DB } from '../../core/products-by-category.db';
 
 @Component({
   selector: 'app-home',
@@ -42,11 +43,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   // Store data
   isTagProduct: boolean
   popup: Popup;
-  tags: any[] = [];
+  tagAndProducts: any[] = PRODUCTSBYCATEGORY_DB;
   shopInfo: ShopInformation;
 
   // Theme Settings
-  showcaseViews: string;
+  showcaseViews: string = 'Showcase 3';
   productViews: string;
   themeColors: any;
   seoPageData: any;
@@ -70,10 +71,11 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // Theme Settings
-    this.getSettingData();
 
     if (this.isTagProduct) {
-      this.getAllTags();
+
+
+
     }
     this.popupView();
     if (isPlatformBrowser(this.platformId)) {
@@ -88,13 +90,7 @@ export class HomeComponent implements OnInit, OnDestroy {
    * getSettingData()
    */
 
-  private getSettingData() {
-    const themeViewSettings: ThemeViewSetting[] = this.appConfigService.getSettingData('themeViewSettings');
-    this.productViews = themeViewSettings.find(f => f.type == 'productViews').value.join();
-    this.showcaseViews = themeViewSettings.find(f => f.type == 'showcaseViews').value.join();
-    this.themeColors = this.appConfigService.getSettingData('themeColors');
-    this.isTagProduct = this.productViews.split(',').includes('Tag');
-  }
+
 
 
   /**
@@ -156,18 +152,7 @@ export class HomeComponent implements OnInit, OnDestroy {
    * getAllTags()
    * getPopup()
    */
-  getAllTags() {
-    const subscription = this.tagService.getAllTags()
-      .subscribe({
-        next: res => {
-          this.tags = res.data;
-        },
-        error: (err) => {
-          console.log(err)
-        }
-      });
-    this.subscriptions?.push(subscription);
-  }
+
 
   private getPopup() {
     const subscription = this.popupService.getPopup().subscribe({

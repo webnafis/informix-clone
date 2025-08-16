@@ -1,16 +1,16 @@
-import {Component, inject, OnDestroy, OnInit, PLATFORM_ID} from '@angular/core';
-import {filter, Subscription} from 'rxjs';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {UtilsService} from './services/core/utils.service';
-import {AppConfigService} from './services/core/app-config.service';
-import {UserService} from './services/common/user.service';
-import {Setting, ThemeViewSetting} from './interfaces/common/setting.interface';
-import {SettingService} from './services/common/setting.service';
-import {ScriptLoaderService} from './services/core/script-loader.service';
-import {isPlatformBrowser} from "@angular/common";
-import {Meta, Title} from "@angular/platform-browser";
-import {GtmPageView} from "./interfaces/core/gtm.interface";
-import {GtmService} from "./services/core/gtm.service";
+import { Component, inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
+import { filter, Subscription } from 'rxjs';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { UtilsService } from './services/core/utils.service';
+import { AppConfigService } from './services/core/app-config.service';
+import { UserService } from './services/common/user.service';
+import { Setting, ThemeViewSetting } from './interfaces/common/setting.interface';
+import { SettingService } from './services/common/setting.service';
+import { ScriptLoaderService } from './services/core/script-loader.service';
+import { isPlatformBrowser } from "@angular/common";
+import { Meta, Title } from "@angular/platform-browser";
+import { GtmPageView } from "./interfaces/core/gtm.interface";
+import { GtmService } from "./services/core/gtm.service";
 
 @Component({
   selector: 'app-root',
@@ -19,7 +19,7 @@ import {GtmService} from "./services/core/gtm.service";
 })
 export class AppComponent implements OnInit, OnDestroy {
   // Theme Settings
-  headerViews: string;
+  headerViews: string = 'Header 2';
   private eventId: string;
 
   // Store Data
@@ -78,7 +78,7 @@ export class AppComponent implements OnInit, OnDestroy {
     });
 
     // Base
-    this.getSettingData();
+    // this.getSettingData();
     this.initRouteEvent();
     this.userService.autoUserLoggedIn();
     this.userService.getUserDataFromLocal();
@@ -181,10 +181,10 @@ export class AppComponent implements OnInit, OnDestroy {
    * getSettingData()
    */
 
-  private getSettingData() {
-    const themeViewSettings: ThemeViewSetting[] = this.appConfigService.getSettingData('themeViewSettings');
-    this.headerViews = themeViewSettings.find(f => f.type == 'headerViews').value.join();
-  }
+  // private getSettingData() {
+  //   const themeViewSettings: ThemeViewSetting[] = this.appConfigService.getSettingData('themeViewSettings');
+  //   this.headerViews = themeViewSettings.find(f => f.type == 'headerViews').value.join();
+  // }
 
   private setColorVariable() {
     const themeColors = this.appConfigService.getSettingData('themeColors');
@@ -239,7 +239,7 @@ export class AppComponent implements OnInit, OnDestroy {
             this.appConfigService.currency = this.setting.currency;
           }
 
-          if(this.setting?.googleSearchConsoleToken){
+          if (this.setting?.googleSearchConsoleToken) {
             this.addGoogleVerification(this.setting?.googleSearchConsoleToken);
           }
         },
@@ -250,7 +250,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.subscriptions?.push(subscription);
   }
 
-  addGoogleVerification(data:string) {
+  addGoogleVerification(data: string) {
     console.log(data)
     this.meta.addTag({
       name: 'google-site-verification',
