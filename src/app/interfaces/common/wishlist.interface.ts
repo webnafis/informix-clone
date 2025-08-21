@@ -1,6 +1,6 @@
-import {User} from './user.interface';
-import {VariationOption} from './variation.interface';
-import {Product} from './product.interface';
+import { User } from './user.interface';
+import { VariationOption } from './variation.interface';
+import { Product } from './product.interface';
 
 export interface Wishlist {
   _id?: string;

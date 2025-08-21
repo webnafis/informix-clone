@@ -9,9 +9,9 @@ import {
   PLATFORM_ID,
   ViewChild
 } from '@angular/core';
-import {isPlatformBrowser, isPlatformServer, NgStyle} from '@angular/common';
-import {FormsModule} from '@angular/forms';
-import {RouterLink} from "@angular/router";
+import { isPlatformBrowser, isPlatformServer, NgStyle } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-image-slider',
@@ -62,7 +62,7 @@ export class ImageSliderComponent implements OnInit, OnDestroy {
     if (this.isBrowser) {
       this.addTouchEventListeners();
     }
-    console.log("slides---->", this.slides);
+    // console.log("slides---->", this.slides);
   }
 
   // Auto Slide Methods

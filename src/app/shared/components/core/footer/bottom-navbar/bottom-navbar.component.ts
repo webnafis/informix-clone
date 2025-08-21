@@ -1,5 +1,5 @@
-import {Component, HostListener, inject, Input, OnInit} from '@angular/core';
-import {Router, RouterLink, RouterLinkActive} from '@angular/router';
+import { Component, HostListener, inject, Input, OnInit } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ShopInformation } from "../../../../../interfaces/common/shop-information.interface";
 import { NgClass } from "@angular/common";
 import { Cart } from "../../../../../interfaces/common/cart.interface";
@@ -31,7 +31,7 @@ export class BottomNavbarComponent implements OnInit {
   private readonly router = inject(Router);
 
   ngOnInit() {
-    console.log("this.carts", this.carts);
+    // console.log("this.carts", this.carts);
   }
 
   /**

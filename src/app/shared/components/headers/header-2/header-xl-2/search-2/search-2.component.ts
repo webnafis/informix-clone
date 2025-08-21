@@ -69,7 +69,7 @@ export class Search2Component implements AfterViewInit, OnDestroy {
     if (isPlatformBrowser(this.platformId)) {
       this.searchAnim();
     }
-    console.log("value changes? ", this.searchForm?.valueChanges);
+    // console.log("value changes? ", this.searchForm?.valueChanges);
 
     const subscription = this.searchForm?.valueChanges
       .pipe(

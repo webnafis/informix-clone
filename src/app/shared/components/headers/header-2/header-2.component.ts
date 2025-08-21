@@ -1,11 +1,9 @@
 import { Component, inject, Input, OnDestroy, OnInit, PLATFORM_ID, Signal } from '@angular/core';
 import { Cart } from '../../../../interfaces/common/cart.interface';
-import { Wishlist } from "../../../../interfaces/common/wishlist.interface";
 import { HeaderXl2Component } from './header-xl-2/header-xl-2.component';
 import { HeaderSm2Component } from './header-sm-2/header-sm-2.component';
 import { ShopInformation } from "../../../../interfaces/common/shop-information.interface";
 import { isPlatformBrowser } from "@angular/common";
-import { NewWishlistService } from "../../../../services/common/new-wishlist.service";
 import { CARTS_DB } from '../../../../core/cart.db';
 import { SHOPINFORMATION_DB } from '../../../../core/shop-information.db';
 
@@ -33,11 +31,8 @@ export class Header2Component implements OnInit, OnDestroy {
 
   // Inject
 
-  private readonly newWishlistService = inject(NewWishlistService);
-  private readonly platformId = inject(PLATFORM_ID);
 
-  // Wishlist Signal
-  wishlists: Signal<Wishlist[]> = this.newWishlistService.newWishlistItems;
+  private readonly platformId = inject(PLATFORM_ID);
 
 
 

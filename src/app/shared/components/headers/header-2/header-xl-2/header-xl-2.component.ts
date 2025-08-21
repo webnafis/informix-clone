@@ -3,7 +3,6 @@ import { Router, RouterLink } from '@angular/router';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { User } from '../../../../../interfaces/common/user.interface';
 import { Cart } from '../../../../../interfaces/common/cart.interface';
-import { Wishlist } from "../../../../../interfaces/common/wishlist.interface";
 import { Search2Component } from './search-2/search-2.component';
 import { HeaderCart2Component } from './header-cart-2/header-cart-2.component';
 import { ImgCtrlPipe } from "../../../../pipes/img-ctrl.pipe";
@@ -30,7 +29,6 @@ export class HeaderXl2Component implements OnInit, OnDestroy {
   @Input() carts: Cart[] = [];
   @Input() cartAnimate: boolean = false;
   @Input() wishlistAnimate: boolean = false;
-  @Input() wishlists: Wishlist[];
   @Input() shopInfo: any;
 
   // Store Data
