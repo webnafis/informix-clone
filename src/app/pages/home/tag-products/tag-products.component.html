@@ -33,21 +33,6 @@
 
     }
     }
-    @case ('Product Card 2') {
-    @for (item of products.slice(0, visibleProducts); track $index) {
-    <app-product-card-2 [product]="item"></app-product-card-2>
-    }
-    }
-    @case ('Product Card 3') {
-    @for (item of products.slice(0, visibleProducts); track $index) {
-    <app-product-card-3 [product]="item"></app-product-card-3>
-    }
-    }
-    @case ('Product Card 4') {
-    @for (item of products.slice(0, visibleProducts); track $index) {
-    <app-product-card-4 [product]="item"></app-product-card-4>
-    }
-    }
     }
     }
     } @placeholder (minimum 50ms) {

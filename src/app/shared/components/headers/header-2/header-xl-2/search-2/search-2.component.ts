@@ -1,6 +1,6 @@
-import {AfterViewInit, Component, ElementRef, inject, OnDestroy, PLATFORM_ID, ViewChild} from '@angular/core';
-import {Product} from "../../../../../../interfaces/common/product.interface";
-import {FormsModule, NgForm, ReactiveFormsModule} from "@angular/forms";
+import { AfterViewInit, Component, ElementRef, inject, OnDestroy, PLATFORM_ID, ViewChild } from '@angular/core';
+import { Product } from "../../../../../../interfaces/common/product.interface";
+import { FormsModule, NgForm, ReactiveFormsModule } from "@angular/forms";
 import {
   debounceTime,
   distinctUntilChanged,
@@ -12,14 +12,12 @@ import {
   switchMap,
   takeUntil
 } from "rxjs";
-import {ProductService} from "../../../../../../services/common/product.service";
-import {Router} from "@angular/router";
-import {DecimalPipe, isPlatformBrowser, NgClass} from "@angular/common";
-import {Pagination} from "../../../../../../interfaces/core/pagination";
-import {FilterData} from "../../../../../../interfaces/core/filter-data";
-import {OutSideClickDirective} from "../../../../../directives/out-side-click.directive";
-import {ProductPricePipe} from '../../../../../pipes/product-price.pipe';
-import {CurrencyCtrPipe} from '../../../../../pipes/currency.pipe';
+import { Router } from "@angular/router";
+import { isPlatformBrowser, NgClass } from "@angular/common";
+import { OutSideClickDirective } from "../../../../../directives/out-side-click.directive";
+import { ProductPricePipe } from '../../../../../pipes/product-price.pipe';
+import { CurrencyCtrPipe } from '../../../../../pipes/currency.pipe';
+import { SPRODUCTS_DB } from '../../../../../../core/sproducts.db';
 
 @Component({
   selector: 'app-search-2',
@@ -29,7 +27,6 @@ import {CurrencyCtrPipe} from '../../../../../pipes/currency.pipe';
     FormsModule,
     ReactiveFormsModule,
     NgClass,
-    DecimalPipe,
     OutSideClickDirective,
     ProductPricePipe,
     CurrencyCtrPipe
@@ -65,7 +62,6 @@ export class Search2Component implements AfterViewInit, OnDestroy {
 
   // Inject
   private readonly platformId = inject(PLATFORM_ID);
-  private readonly productService = inject(ProductService);
   private readonly router = inject(Router);
 
 
@@ -73,6 +69,8 @@ export class Search2Component implements AfterViewInit, OnDestroy {
     if (isPlatformBrowser(this.platformId)) {
       this.searchAnim();
     }
+    console.log("value changes? ", this.searchForm?.valueChanges);
+
     const subscription = this.searchForm?.valueChanges
       .pipe(
         map((t: any) => t['searchTerm']),
@@ -88,34 +86,11 @@ export class Search2Component implements AfterViewInit, OnDestroy {
             return EMPTY;
           }
           this.isLoading = true;
-          const pagination: Pagination = {
-            pageSize: 12,
-            currentPage: 0,
-          };
-          // Select
-          const mSelect = {
-            name: 1,
-            slug: 1,
-            images: 1,
-            category: 1,
-            variationList: 1,
-            regularPrice: 1,
-            salePrice: 1,
-            isVariation: 1,
-            minimumWholesaleQuantity: 1,
-            wholesalePrice: 1,
-          };
+          return SPRODUCTS_DB;
 
-          const filterData: FilterData = {
-            pagination: pagination,
-            filter: {status: 'publish'},
-            select: mSelect,
-            sort: {createdAt: -1},
-          };
-          return this.productService.getAllProducts(
-            filterData,
-            this.searchQuery
-          );
+
+
+
 
         }),
         takeUntil(this.destroy$)
@@ -123,7 +98,7 @@ export class Search2Component implements AfterViewInit, OnDestroy {
       .subscribe({
         next: res => {
           this.isLoading = false;
-          this.searchProducts = res.data.sort((a, b) => a.name.toLowerCase().indexOf(this.searchQuery.toLowerCase()) - b.name.toLowerCase().indexOf(this.searchQuery.toLowerCase()));
+          this.searchProducts = SPRODUCTS_DB.sort((a, b) => a.name.toLowerCase().indexOf(this.searchQuery.toLowerCase()) - b.name.toLowerCase().indexOf(this.searchQuery.toLowerCase()));
           if (this.searchProducts.length > 0) {
             this.isOpen = true;
             this.overlay = true;
@@ -158,10 +133,7 @@ export class Search2Component implements AfterViewInit, OnDestroy {
   onSearchNavigate() {
     let inputVal = (this.searchInput.nativeElement as HTMLInputElement).value;
     if (inputVal) {
-      this.router.navigate(['/', 'products'], {
-        queryParams: {searchQuery: inputVal},
-        queryParamsHandling: ''
-      }).then();
+      this.router.navigate(['/']).then();
       this.searchInput.nativeElement.value = "";
       this.isOpen = false;
     }
@@ -225,7 +197,7 @@ export class Search2Component implements AfterViewInit, OnDestroy {
   onSelectItem(data: Product): void {
     this.searchInput.nativeElement.value = '';
     this.handleCloseAndClear();
-    this.router.navigate(['/', 'product-details', data?.slug]).then();
+    this.router.navigate(['/']).then();
   }
 
   /**

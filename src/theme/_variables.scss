@@ -1,21 +1,21 @@
 // Fonts Family
 @import "store-shop-variables";
 $font-en-satoshi: 'Satoshi', sans-serif;
-$font-en-primary: 'Inter', -apple-system, Helvetica, Arial, sans-serif;
+$font-en-primary: 'Trebuchet MS', sans-serif;
 $font-en-family: "Instrument Serif", serif;
 
 :root {
-  --shop-color-primary: #e8007c;
-  --shop-color-secondary: #00c153;
-  --shop-color-tertiary: #ff00ae;
+  --shop-color-primary: #0f4ca1;
+  --shop-color-secondary: #0f4ca1;
+  --shop-color-tertiary: #27ade3;
   --shop-color-test: #e8007c;
 }
 
 // Base COLORS
 $color-primary: var(--shop-color-primary);
 $color-secondary: var(--shop-color-secondary);
-$color-tertiary:  var(--shop-color-tertiary);
-$discount-color:  #00c153;
+$color-tertiary: var(--shop-color-tertiary);
+$discount-color: #00c153;
 
 // Client COLORS
 $client-color-orange: #ff5a00;
@@ -37,7 +37,7 @@ $color-red: #b00a0a;
 $body-color: #f0f1f6;
 
 //box shadow
-$box-shadow-black: 1px 5px 10px rgba(0, 0, 0, 0.1);
+$box-shadow-black: 1px 5px 10px #0000001a;
 
 // Container
 $header-height: 93px;

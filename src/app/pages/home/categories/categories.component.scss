@@ -2,7 +2,7 @@
 
 .container {
   margin: 10px auto 0;
-  padding-top: 14px; 
+  padding-top: 14px;
 }
 
 .categories-header {
@@ -11,6 +11,7 @@
   align-items: center;
   height: 38px;
   line-height: 38px;
+
   h2 {
     font-size: calc($font-sub-title - 4px);
     font-family: $font-en-primary;
@@ -51,31 +52,25 @@
 .categories-cards {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  column-gap: 35px;
+  column-gap: 15px;
 }
 
-.categories-cards2 {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 15px;
-  padding-top: 16px;
-}
 
-@media (max-width: 1080px){
-  .categories-cards {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    column-gap: 35px;
-  }
-}
+// @media (max-width: 1080px) {
+//   .categories-cards {
+//     display: grid;
+//     grid-template-columns: repeat(6, 1fr);
+//     column-gap: 15px;
+//   }
+// }
 
-@media (max-width: 768px){
-  .categories-cards {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    column-gap: 35px;
-  }
-}
+// @media (max-width: 768px) {
+//   .categories-cards {
+//     display: grid;
+//     grid-template-columns: repeat(5, 1fr);
+//     column-gap: 15px;
+//   }
+// }
 
 //for mobile
 @media only screen and (max-width: 599px) {
@@ -95,6 +90,7 @@
       font-size: 3.46667vw;
       line-height: 4vw;
       color: $color-black;
+
       .arrow-icon {
         margin-left: 0;
       }
@@ -102,39 +98,19 @@
   }
 
   .categories-cards {
-    display: flex;
-    overflow-x: auto;
-    gap: 12px;
-    padding: 4px 0;
-    padding-right: 24px;
-    scroll-snap-type: x proximity;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 9px;
 
-    &::-webkit-scrollbar {
-      display: none;
-    }
 
-    > * {  /* This targets both app-categories-card and app-category-loader */
-      flex: 0 0 auto;
-      width: calc(30% - 8px);
-      min-width: calc(30% - 8px);
-      scroll-snap-align: start;
-    }
   }
 
-  //.categories-cards2 {
-  //  grid-template-columns: repeat(3, 1fr);
-  //  gap: 9px;
-  //}
 
-  .container{
+
+  .container {
     width: 92%;
-    margin: 0 auto!important;
+    margin: 0 auto !important;
     padding: 0 3vw 2.6vw 3vw;
     background-color: $color-white;
     border-radius: 10px;
   }
 }
-

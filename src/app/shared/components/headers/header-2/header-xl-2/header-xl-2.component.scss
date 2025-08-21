@@ -1,7 +1,9 @@
 @import "common/headers/header-xl";
-.homepage-only-height{
-  height: 80px!important;
+
+.homepage-only-height {
+  height: 80px !important;
 }
+
 //.header-fixed{
 //  background-color: $color-primary !important;
 //}
@@ -19,21 +21,22 @@
   }
 }
 
-.header-top-area{
+.header-top-area {
   height: 60px !important;
   border-bottom: none !important;
 }
 
-.header-top{
+.header-top {
   padding: 17px 0 !important;
   border-top: 1px solid #e8e8e8;
-  ul{
+
+  ul {
     display: flex;
     align-items: center;
     gap: 15px;
 
 
-    a{
+    a {
       text-decoration: none;
       color: $color-black;
       font-weight: 500;
@@ -48,12 +51,17 @@
       gap: 5px;
       transition: all .3s linear;
 
-      &:hover{
+      &:hover {
         color: $color-primary !important;
       }
     }
-    li{
+
+    li {
       list-style: none;
     }
   }
+}
+
+.user-auth {
+  display: flex;
 }

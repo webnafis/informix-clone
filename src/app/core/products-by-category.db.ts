@@ -8,7 +8,7 @@ export const PRODUCTSBYCATEGORY_DB: any = [
             "images": [
                 "https://cdn.saleecom.com/upload/images/687c89eb6b0076c2c759b12e/beauty-and-personal-care-79e7.webp?resolution=736_736"
             ],
-            "startDate": null,
+            "startDate": "2025-09-21",
             "bannerType": null,
             "shortDescription": null
         },
@@ -67,7 +67,8 @@ export const PRODUCTSBYCATEGORY_DB: any = [
                 "tags": [
                     {
                         "_id": "687c8a146b0076c2c759b27c",
-                        "name": "Beauty & Personal Care"
+                        "name": "Beauty & Personal Care",
+
                     },
                     {
                         "_id": "687c8a146b0076c2c759b27a",

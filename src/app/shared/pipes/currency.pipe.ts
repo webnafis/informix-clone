@@ -1,5 +1,4 @@
-import {inject, Pipe, PipeTransform} from '@angular/core';
-import {AppConfigService} from "../../services/core/app-config.service";
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   standalone: true,
@@ -7,8 +6,7 @@ import {AppConfigService} from "../../services/core/app-config.service";
 })
 export class CurrencyCtrPipe implements PipeTransform {
 
-  // Inject
-  private appConfigService = inject(AppConfigService);
+
 
   transform(value: number, key?: 'code' | 'symbol' | 'name'): string {
     if (typeof value !== 'number') {
@@ -16,7 +14,7 @@ export class CurrencyCtrPipe implements PipeTransform {
     }
 
     // Fetch currency from AppConfigService
-    const currency = this.appConfigService.currency;
+    const currency = null;
 
     // Default key is 'symbol' if no key is provided
     const defaultKey: 'code' | 'symbol' | 'name' = key || 'symbol';

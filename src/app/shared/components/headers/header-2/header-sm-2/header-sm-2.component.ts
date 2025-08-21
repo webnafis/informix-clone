@@ -1,9 +1,6 @@
-import {Component, HostListener, inject, Input} from '@angular/core';
-import {RouterLink} from "@angular/router";
-import {Cart} from '../../../../../interfaces/common/cart.interface';
-import {Location} from "@angular/common";
-import {AppConfigService} from "../../../../../services/core/app-config.service";
-import {NavigationService} from "../../../../../services/core/navigation.service";
+import { Component, HostListener, inject, Input } from '@angular/core';
+import { RouterLink } from "@angular/router";
+import { Cart } from '../../../../../interfaces/common/cart.interface';
 
 @Component({
   selector: 'app-header-sm-2',
@@ -17,7 +14,14 @@ import {NavigationService} from "../../../../../services/core/navigation.service
 export class HeaderSm2Component {
 
   // Theme Settings
-  searchHints: string[] = [];
+  searchHints: string[] = [
+    "lipstick",
+    "foundation",
+    "face serum",
+    "moisturizer",
+    "lipstick",
+    "lipstick"
+  ];
 
   // Decorator
   @Input() currentUrl: string;
@@ -29,13 +33,10 @@ export class HeaderSm2Component {
   isHeaderFixed: boolean = false;
   isHeaderTopHidden: boolean = false;
 
-  // Inject
-  private readonly appConfigService = inject(AppConfigService);
-  private readonly navigationService = inject(NavigationService);
 
   ngOnInit() {
-    // Theme Settings
-    this.getSettingData();
+
+
   }
 
   /**
@@ -43,11 +44,7 @@ export class HeaderSm2Component {
    * getSettingData()
    */
 
-  private getSettingData() {
-    const searchHintsSetting = this.appConfigService.getSettingData('searchHints');
-    const baseResults = searchHintsSetting.split(',').map((item: string) => item.trim());
-    this.searchHints = [...baseResults, baseResults[0]];
-  }
+
 
   @HostListener('window:scroll')
   onScroll() {
@@ -57,14 +54,12 @@ export class HeaderSm2Component {
 
 
   get isVisible() {
-    if(this.currentUrl === '/search') {
+    if (this.currentUrl === '/search') {
       return false;
-    }else {
+    } else {
       return true;
     }
   }
 
-  goBack(): void {
-    this.navigationService.back();
-  }
+
 }

@@ -1,17 +1,12 @@
-import {Component, inject, Input, OnDestroy, OnInit} from '@angular/core';
-import {Cart} from '../../../../../../interfaces/common/cart.interface';
-import {UserService} from '../../../../../../services/common/user.service';
-import {CartService} from '../../../../../../services/common/cart.service';
-import {Subscription} from 'rxjs';
-import {NavigationEnd, Router, RouterLink} from '@angular/router';
-import {UtilsService} from '../../../../../../services/core/utils.service';
-import {NgClass, } from '@angular/common';
-import {Product} from "../../../../../../interfaces/common/product.interface";
-import {ReloadService} from "../../../../../../services/core/reload.service";
-import {ProductPricePipe} from '../../../../../pipes/product-price.pipe';
-import {VariationInfoInlinePipe} from '../../../../../pipes/variation-info-inline.pipe';
-import {EmptyDataComponent} from "../../../../ui/empty-data/empty-data.component";
-import {CurrencyCtrPipe} from '../../../../../pipes/currency.pipe';
+import { Component, inject, Input, OnDestroy, OnInit } from '@angular/core';
+import { Cart } from '../../../../../../interfaces/common/cart.interface';
+import { RouterLink } from '@angular/router';
+import { NgClass, } from '@angular/common';
+import { Product } from "../../../../../../interfaces/common/product.interface";
+import { ProductPricePipe } from '../../../../../pipes/product-price.pipe';
+import { VariationInfoInlinePipe } from '../../../../../pipes/variation-info-inline.pipe';
+import { EmptyDataComponent } from "../../../../ui/empty-data/empty-data.component";
+import { CurrencyCtrPipe } from '../../../../../pipes/currency.pipe';
 
 @Component({
   selector: 'app-header-cart-2',
@@ -33,69 +28,14 @@ export class HeaderCart2Component implements OnInit, OnDestroy {
   // Store Data
   @Input() carts: Cart[] = [];
   @Input() cartAnimate: boolean = false;
-  currentUrl: string;
+  currentUrl: string = '/';
 
   // Inject
-  private readonly userService = inject(UserService);
-  private readonly cartService = inject(CartService);
-  private readonly router = inject(Router);
-  private readonly utilsService = inject(UtilsService);
   private readonly productPricePipe = inject(ProductPricePipe);
-  private readonly reloadService = inject(ReloadService);
-
-  // Subscriptions
-  private subscriptions: Subscription[] = [];
 
 
   ngOnInit() {
-    this.initRouteEvent();
-  }
 
-
-  /**
-   * Router Methods
-   * initRouteEvent()
-   */
-  private initRouteEvent() {
-    const subscription = this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.currentUrl = this.utilsService.removeUrlQuery(event.urlAfterRedirects);
-      }
-    });
-    this.subscriptions?.push(subscription);
-  }
-
-
-  /**
-   * Cart Methods
-   * onDeleteCartItem()
-   * deleteCartById()
-   */
-  onDeleteCartItem(cartId: string, productId?: string) {
-    if (this.userService.isUser) {
-      this.deleteCartById(cartId);
-    } else {
-      this.cartService.deleteCartItemFromLocalStorage([productId]);
-      // Update Cart Before API Calls
-      this.carts = this.carts.filter(cart => cart._id !== cartId);
-      this.reloadService.needRefreshCart$(true);
-    }
-  }
-
-  deleteCartById(cartId: string) {
-    // Update Cart Before API Calls
-    this.carts = this.carts.filter(cart => cart._id !== cartId);
-    const subscription = this.cartService.deleteCartById(cartId)
-      .subscribe({
-        next: () => {
-          this.reloadService.needRefreshCart$(true);
-        },
-        error: error => {
-          console.log(error)
-        }
-      });
-
-    this.subscriptions?.push(subscription);
   }
 
   /**
@@ -123,6 +63,6 @@ export class HeaderCart2Component implements OnInit, OnDestroy {
    * On Destroy
    */
   ngOnDestroy() {
-    this.subscriptions?.forEach(sub => sub?.unsubscribe());
+
   }
 }

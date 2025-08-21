@@ -1,14 +1,9 @@
-import { Component, ElementRef, inject, Input, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
-import { timer } from 'rxjs';
-import { isPlatformBrowser, JsonPipe } from '@angular/common';
+import { Component, inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { TimeCounterModule } from "../../../shared/components/time-counter/time-counter.module";
 import { RouterLink } from "@angular/router";
 import { ProductCard1Component } from "../../../shared/components/product-cards/product-card-1/product-card-1.component";
-import { ProductCard2Component } from "../../../shared/components/product-cards/product-card-2/product-card-2.component";
 import { ProductCardLoaderComponent } from "../../../shared/loader/product-card-loader/product-card-loader.component";
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
-import { ProductCard3Component } from "../../../shared/components/product-cards/product-card-3/product-card-3.component";
-import { ProductCard4Component } from "../../../shared/components/product-cards/product-card-4/product-card-4.component";
 
 
 @Component({
@@ -20,11 +15,7 @@ import { ProductCard4Component } from "../../../shared/components/product-cards/
     TimeCounterModule,
     RouterLink,
     ProductCard1Component,
-    ProductCard2Component,
     ProductCardLoaderComponent,
-    ProductCard3Component,
-    ProductCard4Component,
-    JsonPipe
   ]
 })
 export class TagProductsComponent implements OnInit, OnDestroy {
@@ -50,8 +41,6 @@ export class TagProductsComponent implements OnInit, OnDestroy {
   productsPerPage = 10;
 
   // Inject
-  private readonly platformId = inject(PLATFORM_ID);
-  private readonly el = inject(ElementRef);
   private readonly breakpointObserver = inject(BreakpointObserver);
 
 

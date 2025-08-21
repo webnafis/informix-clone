@@ -22,14 +22,7 @@ export class CategoriesCardComponent {
   @Input() category: Category = null;
   ngOnInit() {
 
-    // console.log("images category in category section where pipe is used ", this.category);
   }
 
-  // Store Data
-  /**
-   * Usage Guide
-   * sizes="(max-width: 599px) 16px, (min-width: 600px) 48px"
-   * If with 16px then take the next src near 16w
-   */
   protected readonly rawSrcset: string = '128w, 384w';
 }

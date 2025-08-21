@@ -1,13 +1,6 @@
 <div class="home-container">
 
   @switch (showcaseViews) {
-  @case ('Showcase 1') {
-  <!--      <app-showcase-1></app-showcase-1>-->
-  <app-showcase-2></app-showcase-2>
-  }
-  @case ('Showcase 2') {
-  <app-showcase-2></app-showcase-2>
-  }
   @case ('Showcase 3') {
   <app-showcase-3></app-showcase-3>
   }
@@ -23,7 +16,7 @@
   <app-tag-products [tag]="tagProduct.tag" [products]="tagProduct.products" [index]="i"></app-tag-products>
   }
   <!-- END Tag View -->
-
+  <app-brands />
 </div>
 
 <div class="footer-wrapper">
